@@ -4,6 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageDescription>Contracts of Inventory Microservice</PackageDescription>
+    <Authors>Selva GS</Authors>
+    <Company>Lets Learn .Net</Company>
   </PropertyGroup>
 
 </Project>
