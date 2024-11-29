@@ -1,0 +1,3 @@
+# Play.Inventory
+
+Inventory Microservice
