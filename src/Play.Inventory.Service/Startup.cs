@@ -35,7 +35,7 @@ namespace Play.Inventory.Service
             services.AddMongo()
                     .AddMongoRepository<InventoryItem>("inventoryitems")
                     .AddMongoRepository<CatalogItem>("catalogitems")
-                    .AddMassTransitWithRabbitMQ(retryConfigurator => {
+                    .AddMassTransitWithMessageBroker(Configuration, retryConfigurator => {
                         retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
                         retryConfigurator.Ignore<UnknownItemException>(); // we can use ignore incase of multiple exceptions
                     })
@@ -49,6 +49,7 @@ namespace Play.Inventory.Service
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Inventory.Service", Version = "v1" });
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

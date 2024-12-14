@@ -3,7 +3,7 @@ Inventory Microservice
 
 ## Create and publish package
 ```powershell
-$version="1.0.2"
+$version="1.0.3"
 $owner="Dot-Net-Micro-Services"
 $gh_pat="[PAT HERE]"
 
@@ -21,5 +21,11 @@ docker build --secret id=GH_OWNER --secret id=GH_PAT -t play.inventory:$version 
 
 ## Run the docker image
 ```powershell
-docker run -it -rm -p 5004:5004 --name inventory play.inventory:$version
+$cosmosDbConnectionString="[CONNECTION STRING HERE]"
+$serviceBusConnectionString="[CONNECTION STRING HERE]"
+docker run -it -rm -p 5004:5004 --name inventory 
+-e MongoDbSettings__ConnectionString=$cosmosDbConnectionString
+-e ServiceBusSettings__ConnectionString=$serviceBusConnectionString
+-e ServiceSettings__MessageBroker="SERVICEBUS"
+play.inventory:$version
 ```
