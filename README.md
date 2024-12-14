@@ -16,7 +16,8 @@ dotnet nuget push ..\packages\Play.Inventory.Contracts.$version.nupkg --api-key 
 ```powershell
 $env:GH_OWNER="Dot-Net-Micro-Services"
 $env:GH_PAT="[PAT HERE]"
-docker build --secret id=GH_OWNER --secret id=GH_PAT -t play.inventory:$version .
+$acrname="playeconomyacrdev"
+docker build --secret id=GH_OWNER --secret id=GH_PAT -t "$acrname.azurecr.io/play.inventory:$version" .
 ```
 
 ## Run the docker image
@@ -28,4 +29,9 @@ docker run -it --rm -p 5004:5004 --name inventory
 -e ServiceBusSettings__ConnectionString=$serviceBusConnectionString
 -e ServiceSettings__MessageBroker="SERVICEBUS"
 play.inventory:$version
+```
+## Publish the docker image
+```powershell
+az acr login --name $acrname
+docker push "$acrname.azurecr.io/play.inventory:$version"
 ```
