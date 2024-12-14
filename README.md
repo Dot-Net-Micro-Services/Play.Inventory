@@ -23,7 +23,7 @@ docker build --secret id=GH_OWNER --secret id=GH_PAT -t play.inventory:$version 
 ```powershell
 $cosmosDbConnectionString="[CONNECTION STRING HERE]"
 $serviceBusConnectionString="[CONNECTION STRING HERE]"
-docker run -it -rm -p 5004:5004 --name inventory 
+docker run -it --rm -p 5004:5004 --name inventory 
 -e MongoDbSettings__ConnectionString=$cosmosDbConnectionString
 -e ServiceBusSettings__ConnectionString=$serviceBusConnectionString
 -e ServiceSettings__MessageBroker="SERVICEBUS"
