@@ -16,6 +16,7 @@ using Play.Common.MassTransit;
 using Play.Common.Identity;
 using GreenPipes;
 using Play.Inventory.Service.Exceptions;
+using Play.Common.HealthChecks;
 
 namespace Play.Inventory.Service
 {
@@ -49,6 +50,9 @@ namespace Play.Inventory.Service
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Inventory.Service", Version = "v1" });
             });
+
+            services.AddHealthChecks()
+                    .AddMongoDbHealthCheck();
             
         }
 
@@ -78,6 +82,7 @@ namespace Play.Inventory.Service
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapPlayEconomyHealthChecks();
             });
         }
 
