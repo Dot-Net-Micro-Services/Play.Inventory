@@ -3,7 +3,7 @@ Inventory Microservice
 
 ## Create and publish package
 ```powershell
-$version="1.0.3"
+$version="1.0.4"
 $owner="Dot-Net-Micro-Services"
 $gh_pat="[PAT HERE]"
 
