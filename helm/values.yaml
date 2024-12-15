@@ -1,0 +1,13 @@
+microserviceName: "inventory"
+
+image:
+  repository: playeconomyacrdev.azurecr.io/play.inventory
+  tag: 1.0.4
+
+envVariables:
+  ServiceSettings__Authority: "https://playeconomy.southindia.cloudapp.azure.com/identity-svc"
+
+container:
+  port: 5004
+
+identityClientId: 429c9a32-c489-464f-99d6-790d396d05e3
