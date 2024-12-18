@@ -18,6 +18,7 @@ using Play.Inventory.Service.Exceptions;
 using Play.Common.HealthChecks;
 using Play.Common.Logging;
 using MassTransit;
+using Play.Common.OpenTelemetry;
 
 namespace Play.Inventory.Service
 {
@@ -55,7 +56,8 @@ namespace Play.Inventory.Service
             services.AddHealthChecks()
                     .AddMongoDbHealthCheck();
 
-            services.AddSeqLogging(Configuration);
+            services.AddSeqLogging(Configuration)
+                    .AddTracing(Configuration);
             
         }
 
