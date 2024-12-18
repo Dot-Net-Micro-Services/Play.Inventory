@@ -14,10 +14,10 @@ using Microsoft.Extensions.Logging;
 using Polly.Timeout;
 using Play.Common.MassTransit;
 using Play.Common.Identity;
-using GreenPipes;
 using Play.Inventory.Service.Exceptions;
 using Play.Common.HealthChecks;
 using Play.Common.Logging;
+using MassTransit;
 
 namespace Play.Inventory.Service
 {
