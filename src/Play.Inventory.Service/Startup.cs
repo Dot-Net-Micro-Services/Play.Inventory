@@ -17,6 +17,7 @@ using Play.Common.Identity;
 using GreenPipes;
 using Play.Inventory.Service.Exceptions;
 using Play.Common.HealthChecks;
+using Play.Common.Logging;
 
 namespace Play.Inventory.Service
 {
@@ -53,6 +54,8 @@ namespace Play.Inventory.Service
 
             services.AddHealthChecks()
                     .AddMongoDbHealthCheck();
+
+            services.AddSeqLogging(Configuration);
             
         }
 
